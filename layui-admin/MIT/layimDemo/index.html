@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layim本地测试</title>
+    <link rel="stylesheet" href="./static/build/css/layui.css" media="all">
+    <link rel="shortcut icon" href="#" />
+    <style>
+        body {
+            background-color: #464545;
+        }
+        
+        h1 {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>layim测试</h1>
+    <script src="./static/build/layui.js"></script>
+    <script>
+        layui.use('layim', function(layim) {
+            var autoReplay = [
+                '请问有什么可以帮您',
+                '这是自动回复1。',
+                '这是自动回复2。',
+                '采菊东篱下',
+                '悠然现南山'
+            ];
+            layim.config({
+                brief: false,
+                tool: [{
+                    alias: 'code',
+                    title: '代码段',
+                    icon: '&#xe64e;'
+                }],
+                title: "xdk",
+                msgbox: './static/build/css/modules/layim/html/msgbox.html',
+                find: './static/build/css/modules/layim/html/find.html',
+                chatLog: './static/build/css/modules/layim/html/chatlog.html',
+                copyright: false,
+                init: {
+                    url: 'json/testList.json',
+                    data: []
+                },
+                members: {
+                    url: 'json/testMembers.json' //接口地址
+                        ,
+                    type: 'get' //默认get
+                        ,
+                    data: {} //额外参数
+                },
+                uploadImage: {
+                    url: '',
+                    type: 'post' //默认post
+                },
+                uploadFile: {
+                    url: '' //接口地址
+                        ,
+                    type: 'post'
+                },
+
+            })
+            layim.chat({
+                name: '在线客服',
+                type: 'friend',
+                avatar: 'http://tp1.sinaimg.cn/5619439268/180/40030060651/1',
+                id: -1
+            });
+
+            layim.on('tool(code)', function(insert, send, obj) {
+                layer.prompt({
+                    title: '插入代码',
+                    formType: 2,
+                    shade: 0
+                }, function(text, index) {
+                    layer.close(index);
+                    insert('[pre class=layui-code]' + text + '[/pre]');
+                });
+            });
+
+            //layim就绪监听
+            layim.on('ready', function(res) {
+                layim.msgbox(2); //模拟新消息
+                setTimeout(function() {
+                    layim.getMessage({
+                        username: "杰克马",
+                        avatar: "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                        id: "123123456",
+                        type: "friend",
+                        content: "定时器：" + new Date().getTime()
+                    });
+                }, 3000);
+            });
+
+            layim.on('sendMessage', function(data) {
+                var To = data.to;
+                if (To.type === 'friend') {
+                    layim.setChatStatus('<span style="color:#2cb866;">对方正在输入。。。</span>');
+                }
+                setTimeout(function() {
+                    var obj = {};
+                    if (To.type === 'group') {
+                        obj = {
+                            username: '群员' + (Math.random() * 100 | 0),
+                            avatar: layui.cache.dir + 'images/face/' + (Math.random() * 72 | 0) + '.gif',
+                            id: To.id,
+                            type: To.type,
+                            content: autoReplay[Math.random() * 4 | 0]
+                        }
+                    } else {
+                        obj = {
+                            username: To.name,
+                            avatar: To.avatar,
+                            id: To.id,
+                            type: To.type,
+                            content: autoReplay[Math.random() * 4 | 0]
+                        }
+                        layim.setChatStatus('<span style="color:#2cb866;">在线</span>');
+                    }
+                    layim.getMessage(obj);
+                }, 1000);
+            });
+            layim.on('chatChange', function(res) {
+                var type = res.data.type;
+                console.log(res.data.id)
+                if (type === 'friend') {
+                    layim.setChatStatus('<span style="color:#2cb866;">在线</span>');
+                } else if (type == 'group') {
+                    layim.getMessage({
+                        system: true,
+                        id: res.data.id,
+                        type: "group",
+                        content: '群员' + (Math.random() * 100 | 0) + '加入群聊'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

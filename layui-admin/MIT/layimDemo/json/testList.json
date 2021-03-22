@@ -1,0 +1,64 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "mine": {
+            "username": "xdk",
+            "id": "100000",
+            "status": "online",
+            "sign": "欢迎使用layui",
+            "avatar": "http://cdn.firstlinkapp.com/upload/2016_6/1465575923433_33812.jpg"
+        },
+        "friend": [{
+            "groupname": "前端码队",
+            "id": 1,
+            "online": 2,
+            "list": [{
+                "username": "张三",
+                "id": "100001",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": "这些都是测试数据"
+            }, {
+                "username": "李四",
+                "id": "100003",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": "hhhhhhh"
+            }, {
+                "username": "王五",
+                "id": "2354576",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": ""
+            }, {
+                "username": "杰克马",
+                "id": "123123456",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": "让天下没有难做的生意",
+                "status": "outline"
+            }]
+        }, {
+            "groupname": "二组",
+            "id": 2,
+            "online": 3,
+            "list": [{
+                "username": "theOne",
+                "id": "11112222",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": ""
+            }, {
+                "username": "theTwo",
+                "id": "1233333",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": ""
+            }]
+        }],
+        "group": [{
+            "groupname": "前端群",
+            "id": "101",
+            "avatar": "http://tp2.sinaimg.cn/5488749285/50/5719808192/1"
+        }, {
+            "groupname": "前端群2",
+            "id": "102",
+            "avatar": "http://tp2.sinaimg.cn/5488749285/50/5719808192/1"
+        }]
+    }
+}

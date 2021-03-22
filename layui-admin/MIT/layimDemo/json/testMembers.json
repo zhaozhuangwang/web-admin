@@ -1,0 +1,40 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "owner": {
+            "username": "xdk",
+            "id": "100000",
+            "status": "online",
+            "sign": "欢迎使用layui",
+            "avatar": "http://cdn.firstlinkapp.com/upload/2016_6/1465575923433_33812.jpg"
+        },
+        "members": 14,
+        "list": [{
+                "username": "张三",
+                "id": "100001",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": "这些都是测试数据"
+            },
+            {
+                "username": "李四",
+                "id": "100003",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": "hhhhhhh"
+            },
+            {
+                "username": "王五",
+                "id": "2354576",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": ""
+            },
+            {
+                "username": "杰克马",
+                "id": "123123456",
+                "avatar": "http://tp4.sinaimg.cn/2145291155/180/5601307179/1",
+                "sign": "让天下没有难做的生意",
+                "status": "outline"
+            }
+        ]
+    }
+}
